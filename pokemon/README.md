@@ -13,6 +13,7 @@ In DCGAN architecture, the discriminator D is Convolutional Neural Networks (CNN
 ![](http://deeplearning.net/software/theano_versions/dev/_images/same_padding_no_strides_transposed.gif)
 
 The network structure for the discriminator is given by:
+
 | Layer        | Shape           | Activation           |
 | ------------- |:-------------:|:-------------:|
 | input     | batch size, 3, 64, 64 | |
@@ -22,12 +23,14 @@ The network structure for the discriminator is given by:
 | convolution      | batch size, 512, 4, 4 | LRelu |
 | dense      | batch size, 64, 32, 32 | Sigmoid |
 
+
 The generator g, which is trained to generate image to fool the discriminator, is trained to generate image from a random input. In DCGAN architecture, the generator is represented by convolution networks that upsample the input. The goal is to process the small input and make an output that is bigger than the input. It works by expanding the input to have zero in-between and then do the convolution process over this expanded area. The convolution over this area will result in larger input for the next layer. The process of upsampling is shown below: 
 ![](http://deeplearning.net/software/theano_versions/dev/_images/padding_strides_transposed.gif)
 
 There are many name for this upsample process: full convolution, in-network upsampling, fractionally-strided convolution, deconvolution, or transposed convolution. 
 
 The network structure for the generator is given by:
+
 | Layer        | Shape           | Activation           |
 | ------------- |:-------------:|:-------------:|
 | input     | batch size, 100 (Noise from uniform distribution) | |
@@ -38,14 +41,17 @@ The network structure for the generator is given by:
 | deconvolution      | batch size, 64, 32, 32 | Relu |
 | deconvolution      | batch size, 3, 64, 64 | Tanh |
 
+
  ### Hyperparameter of DCGAN
 The hyperparameter for DCGAN architecture is given in the table below:
+
 | Hyperparameter        |
 | ------------- |
 | Mini-batch size of 64     |
 | Weight initialize from normal distribution with std = 0.02      |  
 | LRelu slope = 0.2      |
 | Adam Optimizer with learning rate = 0.0002 and momentum = 0.5      |
+
 
 ## Pokemon Image Dataset
 The dataset of pokemon images are gathered from various sources :
@@ -58,13 +64,16 @@ Since there is a limited number of unique Pokemon (around 800), some augmentatio
 
 # Experiment Result
 Here is the training process on unaugmented data
-![](https://media.giphy.com/media/xUOxfoDbU143Be2E5W/giphy.gif)
+
+![](https://media.giphy.com/media/3o751ZJJiwArkl9OZG/giphy.gif)
 
 Now I tried to doble the dataset by flip it horizontally
-![](https://media.giphy.com/media/3oxHQAENQgKy4UTmog/giphy.gif)
+
+![](https://media.giphy.com/media/xULW8sv6Lci0to18oU/giphy.gif)
 
 Finnaly, rotate the image and combine it with flip and original image
-![](https://media.giphy.com/media/3ohs7Hxr1j6sNqdqXS/giphy.gif)
+
+![](https://media.giphy.com/media/3oFzmhJedokWQEGiY0/giphy.gif)
 
 From this experiment I observed that Discriminator quickly learn to distinguish between real and fake sample. So I decide to update generator once more whenever the loss between two is bigger than 3.
 ![](https://preview.ibb.co/j0WyfR/Screenshot_from_2017_12_15_16_44_57.png)
@@ -78,15 +87,15 @@ Next I tried to change the activation function in Generator from ReLU to Leaky R
 Unfortunately, no notable difference in term of image quality and loss function
 ![](https://preview.ibb.co/cT2Vem/Screenshot_from_2017_12_15_16_49_23.png)
 
-### Pokemon Candidate from This Experiment
+## Pokemon Candidate from This Experiment
 ![](https://image.ibb.co/bNRqFR/pokemon_candidate.png)
 
-#### Run the training process
+## Run the training process
 ```sh
 python main.py --dataset pokemon --train
 ```
 
-#### Generate from pre-trained model
+## Generate from pre-trained model
 ```sh
 python main --dataset pokemon
 ```

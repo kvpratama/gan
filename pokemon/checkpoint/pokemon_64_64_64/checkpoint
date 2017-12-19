@@ -1,0 +1,6 @@
+model_checkpoint_path: "DCGAN.model-1990"
+all_model_checkpoint_paths: "DCGAN.model-1950"
+all_model_checkpoint_paths: "DCGAN.model-1960"
+all_model_checkpoint_paths: "DCGAN.model-1970"
+all_model_checkpoint_paths: "DCGAN.model-1980"
+all_model_checkpoint_paths: "DCGAN.model-1990"

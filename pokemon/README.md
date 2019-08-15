@@ -69,7 +69,7 @@ Here is the training process on unaugmented data
 
 ![](https://media.giphy.com/media/3o751ZJJiwArkl9OZG/giphy.gif)
 
-Now I tried to doble the dataset by flip it horizontally
+Now I tried to double the dataset by flip it horizontally
 
 ![](https://media.giphy.com/media/xULW8sv6Lci0to18oU/giphy.gif)
 

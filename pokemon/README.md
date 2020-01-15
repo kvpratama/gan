@@ -65,17 +65,17 @@ All images will be reshaped to 64x64 pixels with a white background. If an image
 Since there is a limited number of unique Pokemon (around 800), some augmentation technique will be used to generate more training dataset. First, all the image will be flip horizontally. Then all images(original and flipped) is rotated 3, 5, and 7 degrees clockwise and counterclockwise. The training set will be the combination of original, flipped, and rotated images.
 
 # Experiment Result
-Here is the training process on unaugmented data
+<!---Here is the training process on unaugmented data--->
 
-![](https://media.giphy.com/media/3o751ZJJiwArkl9OZG/giphy.gif)
+<!---![](https://media.giphy.com/media/3o751ZJJiwArkl9OZG/giphy.gif)--->
 
-Now I tried to double the dataset by flip it horizontally
+<!---Now I tried to double the dataset by flip it horizontally--->
 
-![](https://media.giphy.com/media/xULW8sv6Lci0to18oU/giphy.gif)
+<!---![](https://media.giphy.com/media/xULW8sv6Lci0to18oU/giphy.gif)--->
 
-Finally, rotate the image and combine it with flip and the original image
+<!---Finally, rotate the image and combine it with flip and the original image--->
 
-![](https://media.giphy.com/media/3oFzmhJedokWQEGiY0/giphy.gif)
+<!---![](https://media.giphy.com/media/3oFzmhJedokWQEGiY0/giphy.gif)--->
 
 From this experiment, I observed that Discriminator quickly learn to distinguish between real and fake sample. So I decide to update generator once more whenever the loss between two is bigger than 3.
 ![](https://preview.ibb.co/j0WyfR/Screenshot_from_2017_12_15_16_44_57.png)

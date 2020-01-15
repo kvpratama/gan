@@ -28,7 +28,7 @@ python wgan_generate.py
 tensorboard --logdir=tensorboard-trained
 ```
 ### Training Example
-![](https://media.giphy.com/media/3oxHQzRS6ziK0Deihq/giphy.gif)
+![](https://github.com/kvpratama/gan/blob/master/fmnist/fmnist.gif)
 
 ### Generator Loss
 ![](https://preview.ibb.co/dGCikG/fmnist_gloss.png)

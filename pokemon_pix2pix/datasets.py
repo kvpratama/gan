@@ -81,9 +81,9 @@ class ImageDataset(Dataset):
                 # transforms.RandomAffine(30)
             ])
             img_data_ratio = transforms.functional.affine(img_data_ratio, angle=rot_angle, translate=(translate_h, translate_v),
-                                         scale=scale_, shear=shear_angle, fillcolor=(255, 255, 255))
+                                                          scale=scale_, shear=shear_angle, fillcolor=(255, 255, 255))
             mask_ratio = transforms.functional.affine(mask_ratio, angle=rot_angle, translate=(translate_h, translate_v),
-                                         scale=scale_, shear=shear_angle, fillcolor=255)
+                                                      scale=scale_, shear=shear_angle, fillcolor=255)
 
         img_data_ratio_cj = transform(img_data_ratio)
         mask_ratio_cj = transform(mask_ratio)
@@ -95,13 +95,14 @@ class ImageDataset(Dataset):
         mask_ratio_pad = mask_pad(mask_ratio)
 
         # input_mask = img_data_ratio_pad[3:, :, :]
-        input_mask = mask_ratio_pad
+        # input_mask = mask_ratio_pad
+        mask_ratio_pad = (mask_ratio_pad - self.data_min_val) / (self.data_max_val - self.data_min_val)
 
         if self.opt.reverse:
-            return {"data": img_data_ratio_pad, "gt": input_mask, "img": np.array(img),
+            return {"data": img_data_ratio_pad, "gt": mask_ratio_pad, "img": np.array(img),
                     'path': self.files_data[index], 'mask_index': [row_min, row_max, col_min, col_max]}
         else:
-            return {"data": input_mask, "gt": img_data_ratio_pad, "img": np.array(img),
+            return {"data": mask_ratio_pad, "gt": img_data_ratio_pad, "img": np.array(img),
                     'path': self.files_data[index], 'mask_index': [row_min, row_max, col_min, col_max]}
 
     def __len__(self):

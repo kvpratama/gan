@@ -24,5 +24,12 @@ I use the code from this [blog](https://www.freecodecamp.org/news/sketchify-turn
 ![](https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/610.png)
 <img src="https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/610.gif" width="256">
 
+## Sketch to Color Examples on the test set
+![](https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/641-incarnate.png)
+<img src="https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/641-incarnate.gif" width="256">
+
+![](https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/651.png)
+<img src="https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/651.gif" width="256">
+
 ![](https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/681.png)
 <img src="https://github.com/kvpratama/gan/blob/master/pokemon_pix2pix/assets/681.gif" width="256">

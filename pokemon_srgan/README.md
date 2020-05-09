@@ -14,6 +14,8 @@ Run the training and testing (you will need train and test folder under data dir
 
 
 ## Super Resolution Examples on the test set
-![](https://github.com/kvpratama/gan/blob/master/pokemon_srgan/assets/test_1.jpg)
-![](https://github.com/kvpratama/gan/blob/master/pokemon_srgan/assets/test_2.jpg)
-![](https://github.com/kvpratama/gan/blob/master/pokemon_srgan/assets/test_3.jpg)
+<p align="center">
+  <img src="https://github.com/kvpratama/gan/blob/master/pokemon_srgan/assets/test_1.jpg">
+  <img src="https://github.com/kvpratama/gan/blob/master/pokemon_srgan/assets/test_2.jpg">
+  <img src="https://github.com/kvpratama/gan/blob/master/pokemon_srgan/assets/test_3.jpg">
+</p>

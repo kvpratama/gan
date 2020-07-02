@@ -14,6 +14,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from model import *
+from DiffAugmentation import DiffAugment
 
 import pdb
 
@@ -43,6 +44,7 @@ if __name__ == '__main__':
     parser.add_argument("--lr", type=float, default=0.0002, help="adam: learning rate")
     parser.add_argument("--b1", type=float, default=0.5, help="adam: decay of first order momentum of gradient")
     parser.add_argument("--b2", type=float, default=0.999, help="adam: decay of first order momentum of gradient")
+    parser.add_argument("--aug_prob", type=float, default=0, help="probability of using Diff Augmentation during training")
     opt = parser.parse_args()
     print(opt)
 
@@ -125,6 +127,7 @@ if __name__ == '__main__':
     for epoch in range(opt.num_epochs):
         # For each batch in the dataloader
         for i, data in enumerate(dataloader, 0):
+            rand_prob = np.random.uniform(0, 1)
 
             ############################
             # (1) Update D network: maximize log(D(x)) + log(1 - D(G(z)))
@@ -133,6 +136,13 @@ if __name__ == '__main__':
             netD.zero_grad()
             # Format batch
             real_cpu = data[0].to(device)
+            if rand_prob < opt.aug_prob:
+                real_cpu = DiffAugment(real_cpu, policy='color,translation,cutout')
+                # plt.subplot(1, 2, 1)
+                # plt.imshow(np.transpose(data[0][1].cpu().numpy(), axes=[1, 2, 0]))
+                # plt.subplot(1, 2, 2)
+                # plt.imshow(np.transpose(aug_data[1].cpu().numpy(), axes=[1, 2, 0]))
+                # plt.show()
             b_size = real_cpu.size(0)
             label = torch.full((b_size,), real_label, device=device)
             # Forward pass real batch through D
@@ -148,6 +158,14 @@ if __name__ == '__main__':
             noise = torch.randn(b_size, opt.nz, 1, 1, device=device)
             # Generate fake image batch with G
             fake = netG(noise)
+            if rand_prob < opt.aug_prob:
+                fake = DiffAugment(fake, policy='color,translation,cutout')
+                # plt.subplot(1, 2, 1)
+                # plt.imshow(np.transpose(fake[0].cpu().detach().numpy(), axes=[1, 2, 0]))
+                # plt.subplot(1, 2, 2)
+                # plt.imshow(np.transpose(fake_aug[0].cpu().detach().numpy(), axes=[1, 2, 0]))
+                # plt.show()
+
             label.fill_(fake_label)
             # Classify all fake batch with D
             output = netD(fake.detach()).view(-1)

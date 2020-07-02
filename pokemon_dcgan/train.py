@@ -48,6 +48,13 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     print(opt)
 
+    # Set random seed for reproducibility
+    manualSeed = 999
+    # manualSeed = random.randint(1, 10000) # use if you want new results
+    print("Random Seed: ", manualSeed)
+    random.seed(manualSeed)
+    torch.manual_seed(manualSeed)
+
     os.makedirs("%s/%s/images" % (opt.checkpoints_dir, opt.name), exist_ok=True)
     os.makedirs("%s/%s/saved_models" % (opt.checkpoints_dir, opt.name), exist_ok=True)
 
@@ -207,7 +214,7 @@ if __name__ == '__main__':
         if epoch % 5 == 0 or epoch == opt.num_epochs - 1:
             state = {'epoch_done': epoch, 'opt': opt, 'weight': netG.state_dict()}
             torch.save(state, "%s/%s/saved_models/generator_%d.pth" % (opt.checkpoints_dir, opt.name, epoch))
-            torch.save(netG.state_dict(),
+            torch.save(netD.state_dict(),
                        "%s/%s/saved_models/discriminator_%d.pth" % (opt.checkpoints_dir, opt.name, epoch))
 
             # Check how the generator is doing by saving G's output on fixed_noise

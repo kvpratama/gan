@@ -29,14 +29,14 @@ Below is the generated gif showing examples of generated image during training.
 As you might notice, DCGAN without *DiffAugment* start to generate random noise.This happen starting from epoch 226. 
 The loss graph below could be a hint of what happened during training. 
 
-<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/loss.jpg" width="256">
+<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/loss.jpg" width="512">
 
 Even though it managed to escape this mode around epoch 875, the image quality is unsatisfactory. 
 Furthermore, on the last epoch, this model start showing the tendency to generate random noise again as shown in the figure below.
 
 |DCGAN   	        |DCGAN + *DiffAugment* 0.3 	    |DCGAN + *DiffAugment* 0.5  	|DCGAN + *DiffAugment* 1
 |---	            |---	            	        |---	                        |---	
-|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan.jpg" width="256">|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan_03.gif" width="256">|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan_05.gif" width="256">|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan_1" width="256">|
+|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan.jpg" width="256">|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan_03.jpg" width="256">|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan_05.jpg" width="256">|<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/1000_dcgan_1.jpg" width="256">|
 
 From the figure above, we can also compare the effect of *DiffAugment* with different probability.
 DCGAN + *DiffAugment* with probability of 0.3 tend to generate a somewhat similar looking Pokemon. 
@@ -45,7 +45,7 @@ DCGAN that use *DiffAugment* in every iteration produce the most varying Pokemon
 It is safe to conclude that using *DiffAugment* help generator learn to generate a more diverse samples.
 
 Some Pokemon candidate from this experiment:
-<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/9.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/57.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/58.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/59.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/225.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/278.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/279.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/449.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/590.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/641.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/777.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/939.jpg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/993.jpg">
+<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/9.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/57.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/58.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/59.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/225.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/278.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/279.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/449.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/590.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/641.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/777.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/939.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/993.jpeg">
 
 
 DCGAN code is derived from https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html

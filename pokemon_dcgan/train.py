@@ -35,7 +35,7 @@ if __name__ == '__main__':
     parser.add_argument("--checkpoints_dir", type=str, default="./checkpoints", help="Root directory for dataset")
     parser.add_argument("--workers", type=int, default=2, help="Number of workers for dataloader")
     parser.add_argument("--batch_size", type=int, default=32, help="Batch size during training")
-    parser.add_argument("--image_size", type=int, default=64, help="patial size of training images. All images will be resized to thissize using a transformer")
+    parser.add_argument("--image_size", type=int, default=64, help="spatial size of training images. All images will be resized to this size")
     parser.add_argument("--nc", type=int, default=3, help="Number of channels in the training images. For color images this is 3")
     parser.add_argument("--nz", type=int, default=100, help="Size of z latent vector (i.e. size of generator input)")
     parser.add_argument("--ngf", type=int, default=64, help="Size of feature maps in generator")

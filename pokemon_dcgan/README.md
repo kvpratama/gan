@@ -45,6 +45,7 @@ DCGAN that use *DiffAugment* in every iteration produces the most varying Pokemo
 It is safe to conclude that using *DiffAugment* help generator learn to generate more diverse samples.
 
 Some Pokemon candidate from this experiment:
+
 <img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/9.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/57.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/58.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/59.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/225.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/278.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/279.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/449.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/590.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/641.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/777.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/939.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/993.jpeg">
 
 

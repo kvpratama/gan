@@ -42,9 +42,19 @@ From the figure above, we can also compare the effect of *DiffAugment* with a di
 DCGAN + *DiffAugment* with a probability of 0.3 tends to generate a somewhat similar-looking Pokemon. 
 This was alleviated in DCGAN + *DiffAugment* with a probability of 0.5. 
 DCGAN that use *DiffAugment* in every iteration produces the most varying Pokemon in term of color and shape.
-It is safe to conclude that using *DiffAugment* help generator learn to generate more diverse samples.
+It is safe to conclude that *DiffAugment* helps Generator learn to generate more diverse samples.
 
-Some Pokemon candidate from this experiment:
+
+## FID Score across epoch
+Finally, let's look at the FID Score in the graph below.
+
+<img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/fid.jpg" width="512">
+
+Training without *DiffAugment* pushes the network into Mode Collapse where G just generates a random noise with a very high FID score.
+On the other hand, *DiffAugment* helps stabilized the FID score, and the higher the probability the less fluctuation in FID score observed.
+
+
+## Some Pokemon candidate from this experiment:
 
 <img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/9.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/57.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/58.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/59.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/225.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/278.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/279.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/449.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/590.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/641.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/777.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/939.jpeg"><img src="https://github.com/kvpratama/gan/blob/master/pokemon_dcgan/assets/candidates/993.jpeg">
 

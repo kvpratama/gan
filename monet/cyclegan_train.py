@@ -20,7 +20,7 @@ import matplotlib.animation as animation
 # from model import *
 from cyclegan import *
 import itertools
-# from DiffAugmentation import DiffAugment
+from DiffAugmentation import DiffAugment
 import pdb
 
 
@@ -193,6 +193,7 @@ if __name__ == '__main__':
     prev_time = time.time()
     for epoch in range(opt.epoch, opt.n_epochs):
         for i, batch in enumerate(monet_dataloader):
+            rand_prob = np.random.uniform(0, 1)
 
             # Set model input
             real_A = batch[0].cuda()
@@ -245,11 +246,23 @@ if __name__ == '__main__':
 
             optimizer_D_A.zero_grad()
 
+            # if rand_prob < opt.aug_prob:
+            #     real_A = DiffAugment(real_A, policy='color,translation,cutout')
+            #     fake_A = DiffAugment(fake_A.detach(), policy='color,translation,cutout')
+            # # Real loss
+            # loss_real = criterion_GAN(D_A(real_A), valid)
+            # # Fake loss
+            # loss_fake = criterion_GAN(D_A(fake_A), fake)
+            # else:
             # Real loss
-            loss_real = criterion_GAN(D_A(real_A), valid)
-            # Fake loss (on batch of previously generated samples)
-            fake_A_ = fake_A_buffer.push_and_pop(fake_A)
-            loss_fake = criterion_GAN(D_A(fake_A_.detach()), fake)
+            if rand_prob < opt.aug_prob:
+                loss_real = criterion_GAN(D_A(DiffAugment(real_A, policy='color,translation,cutout')), valid)
+                fake_A_ = fake_A_buffer.push_and_pop(DiffAugment(fake_A, policy='color,translation,cutout'))
+            else:
+                loss_real = criterion_GAN(D_A(real_A), valid)
+                fake_A_ = fake_A_buffer.push_and_pop(fake_A)
+
+            loss_fake = criterion_GAN(D_A(fake_A_), fake)
             # Total loss
             loss_D_A = (loss_real + loss_fake) / 2
 
@@ -262,11 +275,23 @@ if __name__ == '__main__':
 
             optimizer_D_B.zero_grad()
 
+            # if rand_prob < opt.aug_prob:
+            #     real_B = DiffAugment(real_B, policy='color,translation,cutout')
+            #     fake_B = DiffAugment(fake_B, policy='color,translation,cutout')
+            # # Real loss
+            # loss_real = criterion_GAN(D_A(real_B), valid)
+            # # Fake loss
+            # loss_fake = criterion_GAN(D_A(fake_B), fake)
+            # else:
             # Real loss
-            loss_real = criterion_GAN(D_B(real_B), valid)
-            # Fake loss (on batch of previously generated samples)
-            fake_B_ = fake_B_buffer.push_and_pop(fake_B)
-            loss_fake = criterion_GAN(D_B(fake_B_.detach()), fake)
+            if rand_prob < opt.aug_prob:
+                loss_real = criterion_GAN(D_B(DiffAugment(real_B, policy='color,translation,cutout')), valid)
+                fake_B_ = fake_B_buffer.push_and_pop(DiffAugment(fake_B, policy='color,translation,cutout'))
+            else:
+                loss_real = criterion_GAN(D_B(real_B), valid)
+                fake_B_ = fake_B_buffer.push_and_pop(fake_B)
+
+            loss_fake = criterion_GAN(D_A(fake_B_), fake)
             # Total loss
             loss_D_B = (loss_real + loss_fake) / 2
 
@@ -287,18 +312,18 @@ if __name__ == '__main__':
 
             # Print log
             print("\r[Epoch %d/%d] [Batch %d/%d] [D loss: %f] [G loss: %f, adv: %f, cycle: %f, identity: %f] ETA: %s"
-                % (
-                    epoch,
-                    opt.n_epochs,
-                    i,
-                    len(monet_dataloader),
-                    loss_D.item(),
-                    loss_G.item(),
-                    loss_GAN.item(),
-                    loss_cycle.item(),
-                    loss_identity.item(),
-                    time_left,
-                ))
+                  % (
+                      epoch,
+                      opt.n_epochs,
+                      i,
+                      len(monet_dataloader),
+                      loss_D.item(),
+                      loss_G.item(),
+                      loss_GAN.item(),
+                      loss_cycle.item(),
+                      loss_identity.item(),
+                      time_left,
+                  ))
 
             # If at sample interval save image
             if batches_done % opt.sample_interval == 0:
